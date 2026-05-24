@@ -53,9 +53,7 @@ export interface Product {
 
 // Helper: encode path segments with special characters for use in <img src>
 export function imgSrc(path: string): string {
-  const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
   return (
-    base +
     "/" +
     path
       .split("/")
