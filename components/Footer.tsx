@@ -80,8 +80,8 @@ export default function Footer() {
                 }}
                 onMouseEnter={(e) => {
                   const el = e.currentTarget;
-                  el.style.borderColor = "var(--blush)";
-                  el.style.color = "var(--blush)";
+                  el.style.borderColor = "var(--sage)";
+                  el.style.color = "var(--sage)";
                 }}
                 onMouseLeave={(e) => {
                   const el = e.currentTarget;

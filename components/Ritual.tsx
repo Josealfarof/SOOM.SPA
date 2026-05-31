@@ -24,40 +24,40 @@ const steps = [
     numKo: "청결",
     label: "Limpiar",
     desc: "Elimina impurezas y maquillaje con una doble limpieza: aceite primero, espuma después.",
-    color: "#F0EBE0",
-    accent: "#B09060",
+    color: "#EFE8D8",   // Warm Ivory
+    accent: "#D4B4A0",  // Stone Beige
   },
   {
     num: "二",
     numKo: "토닝",
     label: "Tonificar",
     desc: "Equilibra el pH y prepara la piel para absorber mejor los activos que siguen.",
-    color: "#E8F0E4",
-    accent: "#6A8E64",
+    color: "#E4EDE0",   // Moisture Olive tint
+    accent: "#97AF84",  // Moisture Olive
   },
   {
     num: "三",
     numKo: "트리트먼트",
     label: "Tratar",
     desc: "Aplica sueros concentrados con activos específicos para tus necesidades.",
-    color: "#EDE4F0",
-    accent: "#8A6E9E",
+    color: "#F0E8E0",   // Stone Beige tint
+    accent: "#BC8C74",  // Stone Beige deep
   },
   {
     num: "四",
     numKo: "수분",
     label: "Hidratar",
     desc: "Sella toda la humedad con una crema que refuerza y nutre la barrera cutánea.",
-    color: "#F0E8DC",
-    accent: "#B8906A",
+    color: "#E8EDE4",   // Soft olive tint
+    accent: "#4C6C42",  // Deep Olive
   },
   {
     num: "五",
     numKo: "보호",
     label: "Proteger",
     desc: "El paso más importante: protección solar SPF 50+ cada mañana, sin excepción.",
-    color: "#FFF0D8",
-    accent: "#E08A2A",
+    color: "#EDE8D8",   // Parchment warm
+    accent: "#8C8478",  // Soft Taupe
   },
 ];
 

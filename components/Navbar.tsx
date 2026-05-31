@@ -30,19 +30,19 @@ export default function Navbar() {
   const navBg =
     isHome && !scrolled
       ? "bg-transparent"
-      : "bg-cream/95 backdrop-blur-sm border-b border-parchment/60";
+      : "bg-linen/95 backdrop-blur-sm border-b border-parchment/60";
 
   const textColor =
-    isHome && !scrolled ? "text-white" : "text-bark";
+    isHome && !scrolled ? "text-bark" : "text-bark";
 
   const logoColor =
-    isHome && !scrolled ? "text-white" : "text-bark";
+    isHome && !scrolled ? "text-bark" : "text-bark";
 
   return (
     <>
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${navBg}`}
-        style={{ color: isHome && !scrolled ? "white" : "var(--bark)" }}
+        style={{ color: "var(--bark)" }}
       >
         <div
           className="max-w-screen-xl mx-auto px-6 md:px-10 flex items-center justify-between"
@@ -54,7 +54,7 @@ export default function Navbar() {
               className="block text-sm tracking-widest transition-colors duration-300"
               style={{
                 fontFamily: "var(--font-display), 'Cormorant Garamond', serif",
-                color: isHome && !scrolled ? "rgba(255,255,255,0.9)" : "var(--bark)",
+                color: "var(--bark)",
               }}
             >
               숨
@@ -63,7 +63,7 @@ export default function Navbar() {
               className="block text-xl tracking-[0.22em] font-light transition-colors duration-300"
               style={{
                 fontFamily: "var(--font-display), 'Cormorant Garamond', serif",
-                color: isHome && !scrolled ? "white" : "var(--bark)",
+                color: "var(--bark)",
                 letterSpacing: "0.28em",
               }}
             >
@@ -79,7 +79,7 @@ export default function Navbar() {
                 href={href}
                 className="relative text-xs tracking-[0.18em] uppercase font-medium group transition-colors duration-300"
                 style={{
-                  color: isHome && !scrolled ? "rgba(255,255,255,0.85)" : "var(--warm-gray)",
+                  color: "var(--warm-gray)",
                 }}
               >
                 {label}
@@ -96,15 +96,11 @@ export default function Navbar() {
               </Link>
             ))}
             <Link href="/catalogo" className="btn-primary text-xs py-3 px-7"
-              style={
-                isHome && !scrolled
-                  ? {
-                      background: "rgba(255,255,255,0.15)",
-                      borderColor: "rgba(255,255,255,0.5)",
-                      color: "white",
-                    }
-                  : {}
-              }
+              style={{
+                background: "var(--sage-dark)",
+                borderColor: "var(--sage-dark)",
+                color: "white",
+              }}
             >
               Tienda
             </Link>
@@ -121,7 +117,7 @@ export default function Navbar() {
                 key={i}
                 className="block h-px w-6 transition-all duration-300"
                 style={{
-                  background: isHome && !scrolled ? "white" : "var(--bark)",
+                  background: "var(--bark)",
                   transform:
                     menuOpen
                       ? i === 0

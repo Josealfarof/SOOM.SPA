@@ -124,7 +124,7 @@ export default function ProductCard({ product, style, onClick }: Props) {
             lineHeight: 1.75,
             fontWeight: 300,
             display: "-webkit-box",
-            WebkitLineClamp: 2,
+            WebkitLineClamp: 3,
             WebkitBoxOrient: "vertical",
             overflow: "hidden",
           }}

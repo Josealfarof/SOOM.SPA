@@ -1,34 +1,34 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-cream: #FAF6F0;
-  --color-linen: #EDE8DC;
-  --color-parchment: #E0D8CC;
-  --color-blush: #C4A89A;
-  --color-rose: #B8846E;
-  --color-sage: #889E82;
-  --color-sage-dark: #5E7A58;
-  --color-bark: #1C1916;
-  --color-bark-light: #2E2B27;
-  --color-warm-gray: #9A9490;
-  --color-warm-gray-light: #C8C4BE;
+  --color-cream: #F8F4EC;
+  --color-linen: #EFE8D8;
+  --color-parchment: #E2D9C8;
+  --color-blush: #D4B4A0;
+  --color-rose: #BC8C74;
+  --color-sage: #97AF84;
+  --color-sage-dark: #4C6C42;
+  --color-bark: #2E2924;
+  --color-bark-light: #3E3A34;
+  --color-warm-gray: #8C8478;
+  --color-warm-gray-light: #C2BAB0;
   --font-display: var(--font-cormorant);
   --font-body: var(--font-raleway);
 }
 
-/* ── Design tokens ────────────────────────────────────────── */
+/* ── Design tokens — Paleta Oficial SOOM ─────────────────── */
 :root {
-  --cream: #FAF6F0;
-  --linen: #EDE8DC;
-  --parchment: #E0D8CC;
-  --blush: #C4A89A;
-  --rose: #B8846E;
-  --sage: #889E82;
-  --sage-dark: #5E7A58;
-  --bark: #1C1916;
-  --bark-light: #2E2B27;
-  --warm-gray: #9A9490;
-  --warm-gray-light: #C8C4BE;
+  --cream: #F8F4EC;        /* Cream White  — fondo principal     */
+  --linen: #EFE8D8;        /* Warm Ivory   — fondos de tarjeta   */
+  --parchment: #E2D9C8;    /* Warm Ivory ↓ — bordes y divisores  */
+  --blush: #D4B4A0;        /* Stone Beige  — acento principal    */
+  --rose: #BC8C74;         /* Stone Beige ↓ — acento profundo    */
+  --sage: #97AF84;         /* Moisture Olive — acento verde      */
+  --sage-dark: #4C6C42;    /* Deep Olive   — verde oscuro        */
+  --bark: #2E2924;         /* Charcoal Soft — texto y headers    */
+  --bark-light: #3E3A34;   /* Charcoal Soft ↑                   */
+  --warm-gray: #8C8478;    /* Soft Taupe   — texto secundario    */
+  --warm-gray-light: #C2BAB0; /* Soft Taupe ↑ — texto muy suave */
 }
 
 /* ── Base reset ───────────────────────────────────────────── */
@@ -262,8 +262,8 @@ img { display: block; max-width: 100%; }
 }
 .filter-tab:hover,
 .filter-tab.active {
-  border-color: var(--bark);
-  background-color: var(--bark);
+  border-color: var(--sage-dark);
+  background-color: var(--sage-dark);
   color: var(--cream);
 }
 

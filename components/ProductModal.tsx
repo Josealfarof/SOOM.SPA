@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { Product, imgSrc } from "@/lib/products";
+import { productCaracteristicas, type Caracteristica } from "@/lib/productMeta";
 
 // ── How-to-use generator ──────────────────────────────────────────────────────
 
@@ -193,6 +194,17 @@ function getHowToUse(product: Product): HowToUse {
   };
 }
 
+// ── Skin type parser ─────────────────────────────────────────────────────────
+
+function parseSkinTypes(tipoPiel: string): string[] {
+  return tipoPiel
+    .replace(/ y /gi, ", ")
+    .split(",")
+    .map((s) => s.trim())
+    .filter(Boolean)
+    .map((s) => s.charAt(0).toUpperCase() + s.slice(1).toLowerCase());
+}
+
 // ── Routine step indicator ────────────────────────────────────────────────────
 
 const ROUTINE_STEPS = [
@@ -300,7 +312,9 @@ export default function ProductModal({ product, onClose }: Props) {
                   inset: 0,
                   width: "100%",
                   height: "100%",
-                  objectFit: "cover",
+                  objectFit: "contain",
+                  objectPosition: "center",
+                  padding: "12px",
                   opacity: i === activeImg ? 1 : 0,
                   transition: "opacity 0.35s ease",
                   pointerEvents: "none",
@@ -447,11 +461,44 @@ export default function ProductModal({ product, onClose }: Props) {
             {product.name}
           </h2>
 
-          {/* Tags */}
-          <div style={{ display: "flex", flexWrap: "wrap", gap: "6px", marginBottom: "20px" }}>
-            <Tag type="category">{product.category}</Tag>
-            {product.tipoPiel && <Tag type="skin">{product.tipoPiel}</Tag>}
-            {product.concern && <Tag type="concern">{product.concern}</Tag>}
+          {/* Attribute icons */}
+          <div style={{ marginBottom: "22px" }}>
+            {product.tipoPiel && (
+              <div style={{ marginBottom: "16px" }}>
+                <p style={{
+                  fontSize: "0.5rem", letterSpacing: "0.24em",
+                  textTransform: "uppercase", color: "var(--warm-gray-light)",
+                  fontWeight: 600, marginBottom: "10px",
+                }}>
+                  Tipo de Piel
+                </p>
+                <div style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
+                  {parseSkinTypes(product.tipoPiel).map((type) => (
+                    <AttrIconItem key={type} label={type}>
+                      <SkinTypeIcon type={type} />
+                    </AttrIconItem>
+                  ))}
+                </div>
+              </div>
+            )}
+            {(productCaracteristicas[product.id]?.length ?? 0) > 0 && (
+              <div>
+                <p style={{
+                  fontSize: "0.5rem", letterSpacing: "0.24em",
+                  textTransform: "uppercase", color: "var(--warm-gray-light)",
+                  fontWeight: 600, marginBottom: "10px",
+                }}>
+                  Características
+                </p>
+                <div style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
+                  {productCaracteristicas[product.id].map((car) => (
+                    <AttrIconItem key={car} label={car}>
+                      <CaracteristicaIcon car={car} />
+                    </AttrIconItem>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Price + size */}
@@ -586,22 +633,67 @@ function Divider() {
   );
 }
 
-function Tag({ children, type }: { children: React.ReactNode; type: "category" | "skin" | "concern" }) {
-  const styles: Record<string, React.CSSProperties> = {
-    category: { borderColor: "var(--parchment)", color: "var(--warm-gray)" },
-    skin:     { borderColor: "var(--blush)",     color: "var(--blush)" },
-    concern:  { borderColor: "var(--sage)",      color: "var(--sage-dark)" },
-  };
+function AttrIconItem({ label, children }: { label: string; children: React.ReactNode }) {
   return (
-    <span style={{
-      fontSize: "0.56rem", letterSpacing: "0.15em",
-      textTransform: "uppercase", fontWeight: 500,
-      padding: "4px 10px", border: "1px solid",
-      ...styles[type],
-    }}>
-      {children}
-    </span>
+    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "6px" }}>
+      <div style={{
+        width: "50px", height: "50px", borderRadius: "50%",
+        border: "1px solid var(--parchment)", background: "var(--linen)",
+        display: "flex", alignItems: "center", justifyContent: "center",
+        flexShrink: 0,
+      }}>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+          stroke="var(--bark)" strokeWidth="1.4"
+          strokeLinecap="round" strokeLinejoin="round">
+          {children}
+        </svg>
+      </div>
+      <span style={{
+        fontSize: "0.46rem", letterSpacing: "0.1em",
+        textTransform: "uppercase", color: "var(--warm-gray)",
+        textAlign: "center", lineHeight: 1.35, maxWidth: "58px",
+      }}>
+        {label}
+      </span>
+    </div>
   );
+}
+
+function SkinTypeIcon({ type }: { type: string }) {
+  const t = type.toLowerCase();
+  if (t === "sensible")
+    return <path d="M12 3c-3 4-5 7-5 11a5 5 0 0010 0c0-4-2-7-5-11z" />;
+  if (t === "mixta")
+    return (<><circle cx="12" cy="12" r="8" /><path d="M12 4v16" /></>);
+  if (t.includes("gras"))
+    return (<><path d="M12 4L8.5 11a3.5 3.5 0 007 0L12 4z" /><path d="M12 14v4" /></>);
+  if (t === "seca")
+    return (<><path d="M6 9l6 11 6-11H6z" /><path d="M9 13h6" /></>);
+  if (t === "madura")
+    return <path d="M12 3l5 8-5 11-5-11z" />;
+  if (t.includes("todo"))
+    return (<><circle cx="12" cy="12" r="8" /><path d="M9 12l2 2 4-4" /></>);
+  // Normal / fallback
+  return (<><circle cx="12" cy="12" r="8" /><path d="M9.5 11h.01M14.5 11h.01M9 15a4 4 0 006 0" /></>);
+}
+
+function CaracteristicaIcon({ car }: { car: Caracteristica }) {
+  switch (car) {
+    case "Sin Fragancia":
+      return (<><path d="M10 3h4M9 5v2l-2 3v11h10V10l-2-3V5" /><path d="M4.5 4.5l15 15" /></>);
+    case "Sin Alcohol":
+      return (<><path d="M9 3h6M7 8l-3 8h16l-3-8M5 16v5h14v-5" /><path d="M4.5 4.5l15 15" /></>);
+    case "Vegano":
+      return <path d="M12 21v-8m0 0c0-5-5-8-5-8s1 8 5 8m0 0c0-5 5-8 5-8s-1 8-5 8" />;
+    case "Sin Parabenos":
+      return (<><path d="M12 3L5 7v5c0 4.5 3.5 8.5 7 10 3.5-1.5 7-5.5 7-10V7L12 3z" /><path d="M9 12h6M12 9v6" /></>);
+    case "Apto Sensibles":
+      return <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" />;
+    case "Mineral":
+      return (<><path d="M8 3l4 3 4-3 4 6-8 12-8-12z" /><path d="M8 9h8" /></>);
+    case "Probado Dermat.":
+      return (<><circle cx="12" cy="12" r="8" /><path d="M9 12l2 2 4-4" /></>);
+  }
 }
 
 function arrowBtn(side: "left" | "right"): React.CSSProperties {

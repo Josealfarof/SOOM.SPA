@@ -61,7 +61,7 @@ export default function CatalogoPage() {
       {/* Page header */}
       <header
         style={{
-          background: "var(--bark)",
+          background: "var(--sage-dark)",
           paddingTop: "140px",
           paddingBottom: "80px",
           position: "relative",
@@ -92,7 +92,7 @@ export default function CatalogoPage() {
             left: 0,
             right: 0,
             height: "2px",
-            background: "linear-gradient(90deg, var(--blush), var(--sage), var(--blush))",
+            background: "linear-gradient(90deg, rgba(255,255,255,0.1), rgba(255,255,255,0.35), rgba(255,255,255,0.1))",
           }}
         />
 

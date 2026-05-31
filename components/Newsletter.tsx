@@ -33,7 +33,7 @@ export default function Newsletter() {
     <section
       ref={ref}
       style={{
-        background: "var(--bark)",
+        background: "var(--sage-dark)",
         padding: "120px 0",
         position: "relative",
         overflow: "hidden",
@@ -66,7 +66,7 @@ export default function Newsletter() {
           left: 0,
           right: 0,
           height: "2px",
-          background: "linear-gradient(90deg, var(--blush), var(--sage), var(--blush))",
+          background: "linear-gradient(90deg, rgba(255,255,255,0.1), rgba(255,255,255,0.35), rgba(255,255,255,0.1))",
         }}
       />
 

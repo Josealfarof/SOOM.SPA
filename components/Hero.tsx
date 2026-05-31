@@ -26,7 +26,7 @@ export default function Hero() {
       ref={heroRef}
       className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden"
       style={{
-        background: "linear-gradient(160deg, #1C1916 0%, #2E2820 40%, #1A1610 100%)",
+        background: "linear-gradient(160deg, var(--cream) 0%, var(--linen) 50%, var(--cream) 100%)",
       }}
     >
       {/* Texture overlay */}
@@ -34,8 +34,8 @@ export default function Hero() {
         className="absolute inset-0 pointer-events-none"
         style={{
           backgroundImage: `
-            radial-gradient(ellipse 80% 60% at 50% 0%, rgba(196, 168, 154, 0.12) 0%, transparent 70%),
-            radial-gradient(ellipse 40% 50% at 80% 100%, rgba(136, 158, 130, 0.1) 0%, transparent 60%)
+            radial-gradient(ellipse 80% 60% at 50% 0%, rgba(212, 180, 160, 0.12) 0%, transparent 70%),
+            radial-gradient(ellipse 40% 50% at 80% 100%, rgba(76, 108, 66, 0.08) 0%, transparent 60%)
           `,
         }}
       />
@@ -47,7 +47,7 @@ export default function Hero() {
           fontFamily: "var(--font-display), 'Cormorant Garamond', serif",
           fontSize: "clamp(280px, 45vw, 600px)",
           fontWeight: 300,
-          color: "rgba(255,255,255,0.055)",
+          color: "rgba(46,41,36,0.045)",
           left: "50%",
           top: "50%",
           transform: "translate(-50%, -50%)",
@@ -62,11 +62,11 @@ export default function Hero() {
       {/* Horizontal ornament lines */}
       <div
         className="absolute top-1/4 left-0 right-0 pointer-events-none"
-        style={{ height: "1px", background: "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.06) 50%, transparent 100%)" }}
+        style={{ height: "1px", background: "linear-gradient(90deg, transparent 0%, rgba(46,41,36,0.07) 50%, transparent 100%)" }}
       />
       <div
         className="absolute bottom-1/4 left-0 right-0 pointer-events-none"
-        style={{ height: "1px", background: "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.06) 50%, transparent 100%)" }}
+        style={{ height: "1px", background: "linear-gradient(90deg, transparent 0%, rgba(46,41,36,0.07) 50%, transparent 100%)" }}
       />
 
       {/* Content */}
@@ -101,13 +101,13 @@ export default function Hero() {
 
         {/* Main heading */}
         <h1
-          className="text-white"
           style={{
             fontSize: "clamp(52px, 9vw, 110px)",
             fontWeight: 300,
             letterSpacing: "-0.02em",
             lineHeight: 1,
             fontFamily: "var(--font-display), 'Cormorant Garamond', serif",
+            color: "var(--bark)",
             animation: "revealUp 1s cubic-bezier(0.22, 1, 0.36, 1) forwards",
             animationDelay: "0.4s",
             opacity: 0,
@@ -115,7 +115,7 @@ export default function Hero() {
         >
           Respira.
           <br />
-          <em style={{ fontStyle: "italic", color: "var(--blush)" }}>Conecta.</em>
+          <em style={{ fontStyle: "italic", color: "var(--sage-dark)" }}>Conecta.</em>
           <br />
           Brilla.
         </h1>
@@ -124,7 +124,7 @@ export default function Hero() {
         <p
           className="mt-5 tracking-[0.45em] text-sm uppercase"
           style={{
-            color: "rgba(255,255,255,0.35)",
+            color: "rgba(46,41,36,0.3)",
             animation: "revealFade 1s ease forwards",
             animationDelay: "0.8s",
             opacity: 0,
@@ -137,7 +137,7 @@ export default function Hero() {
         <p
           className="mt-8 text-base leading-loose"
           style={{
-            color: "rgba(255,255,255,0.65)",
+            color: "rgba(46,41,36,0.55)",
             fontWeight: 300,
             maxWidth: "420px",
             animation: "revealUp 1s cubic-bezier(0.22, 1, 0.36, 1) forwards",
@@ -162,8 +162,8 @@ export default function Hero() {
             href="/catalogo"
             className="btn-primary"
             style={{
-              background: "var(--blush)",
-              borderColor: "var(--blush)",
+              background: "var(--sage-dark)",
+              borderColor: "var(--sage-dark)",
               color: "white",
               minWidth: "200px",
             }}
@@ -177,8 +177,8 @@ export default function Hero() {
             href="#brand-story"
             className="btn-outline"
             style={{
-              borderColor: "rgba(255,255,255,0.25)",
-              color: "rgba(255,255,255,0.75)",
+              borderColor: "var(--parchment)",
+              color: "var(--warm-gray)",
               minWidth: "200px",
             }}
           >
@@ -199,19 +199,19 @@ export default function Hero() {
       >
         <span
           className="text-xs tracking-[0.3em] uppercase"
-          style={{ color: "rgba(255,255,255,0.3)" }}
+          style={{ color: "rgba(46,41,36,0.3)" }}
         >
           Descubrir
         </span>
         <div
           className="w-px overflow-hidden"
-          style={{ height: "48px", background: "rgba(255,255,255,0.1)" }}
+          style={{ height: "48px", background: "rgba(46,41,36,0.1)" }}
         >
           <div
             className="w-full"
             style={{
               height: "48px",
-              background: "linear-gradient(to bottom, rgba(255,255,255,0.5), transparent)",
+              background: "linear-gradient(to bottom, rgba(46,41,36,0.4), transparent)",
               animation: "scrollLine 1.8s ease-in-out infinite",
             }}
           />
